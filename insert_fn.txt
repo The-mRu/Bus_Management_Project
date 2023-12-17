@@ -1,0 +1,185 @@
+--driver_insert function 
+CREATE OR REPLACE FUNCTION public.driver_insert(
+	data JSON)
+    RETURNS JSON 
+AS $BODY$
+
+declare
+     
+    _driver_id varchar := coalesce((data->>'driver_id')::varchar,'');
+   _name varchar :=coalesce( (data->>'name')::varchar,''); 
+   _age INTEGER:= coalesce((data->>'age')::INTEGER,0);
+	_license_no varchar := coalesce((data->>'license_no')::varchar,'');
+	
+begin
+ 
+	
+	INSERT INTO driver(driver_id,name,age,license_no)
+		VALUES
+ 		(_driver_id,_name,_age,_license_no);
+	return JSON_BUILD_OBJECT(
+	'success','success') ;	
+end;
+$BODY$
+language  plpgsql;
+
+
+
+
+--category_insert function 
+CREATE OR REPLACE FUNCTION public.maintanance_insert(data JSON)
+    RETURNS JSON 
+AS $BODY$
+declare
+     
+    _category varchar := coalesce((param->>'category')::varchar,'');
+   _seats INTEGER :=coalesce( (param->>'seats')::INTEGER,0); 
+   _oil NUMERIC:= coalesce((param->>'oil')::NUMERIC,0);
+	_salary NUMERIC := coalesce((param->>'salary')::NUMERIC,0);
+	
+    
+	_json jsonb := '{}'::jsonb;
+	
+begin
+    _out := '{}';
+	
+	INSERT INTO category(category,seats,oil,salary)
+		VALUES
+ 		(_category,_seats,_oil,_salary);
+		
+end;
+
+$BODY$
+LANGUAGE plpgsql;
+
+
+
+
+
+
+--bus_insert function 
+CREATE OR REPLACE FUNCTION public.bus_insert(data JSON)
+    RETURNS JSON 
+AS $BODY$
+DECLARE
+    _bus_id varchar := COALESCE((data->>'bus_id')::varchar, ''); 
+    _category varchar := COALESCE((data->>'category')::varchar, ''); 
+    _license_no varchar := COALESCE((data->>'license_no')::varchar, '');
+    _assign varchar := COALESCE((data->>'assign')::varchar, '');
+BEGIN
+    INSERT INTO bus(bus_id, category, license_no, assign)
+    VALUES (_bus_id, _category, _license_no, _assign);
+
+    RETURN JSON_BUILD_OBJECT('success', 'success');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+---query
+SELECT public.bus_insert(
+    '{"bus_id":"09", "category":"big","license_no":"CUM-LA 11-1234"}'::json
+);
+
+-- Check the result
+SELECT * FROM bus;
+
+
+
+
+
+
+
+
+--trip_insert function 
+CREATE OR REPLACE FUNCTION public.trip_insert(
+	data JSON)
+    RETURNS JSON 
+AS $BODY$
+declare
+     
+    _driver_id varchar := coalesce((data->>'driver_id')::varchar,'');
+   _bus_id varchar :=coalesce( (data->>'bus_id')::varchar,''); 
+    _date date := coalesce((data->>'date')::date,'2023-12-12');
+	_route_name varchar := coalesce((data->>'route_name')::varchar,'');
+	
+begin
+	
+	INSERT INTO trip(driver_id,bus_id,date,route_name)
+		VALUES
+ 		(_driver_id,_bus_id,_date,_route_name);
+	return JSON_BUILD_OBJECT(
+	'success','success') ;
+		
+end;
+$BODY$
+language  plpgsql;
+
+---query
+SELECT public.trip_insert(
+	'{"driver_id":"2", "bus_id":"04", "date":"2023-12-14","route_name":"bot"}'::json
+);
+select * from driver
+
+
+
+
+
+--route_insert function 
+CREATE OR REPLACE FUNCTION public.route_insert(data JSON)
+    RETURNS JSON 
+AS $BODY$
+DECLARE
+    _route_name varchar := COALESCE((data->>'route_name')::varchar, '');
+    _distance NUMERIC := COALESCE((data->>'distance')::NUMERIC, 0);
+BEGIN
+    INSERT INTO route(route_name, distance)
+    VALUES (_route_name, _distance);
+
+    RETURN JSON_BUILD_OBJECT('success', 'success');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+---query
+SELECT public.route_insert(
+    '{"route_name":"noton bridge","distance":30}'::json
+);
+
+-- Check the result
+SELECT * FROM route;
+
+
+
+
+--maintanance_insert function 
+CREATE OR REPLACE FUNCTION public.maintanance_insert(data JSON)
+    RETURNS JSON 
+AS $BODY$
+DECLARE
+    _bus_id varchar := COALESCE((data->>'bus_id')::varchar, '');
+    _driver_id varchar := COALESCE((data->>'driver_id')::varchar, '');
+    _issue varchar := COALESCE((data->>'issue')::varchar, '');
+    _estimated_cost NUMERIC := COALESCE((data->>'estimated_cost')::NUMERIC, 0);
+    _issue_date date := COALESCE((data->>'date')::date, '2023-12-12');
+    _solved_status varchar := COALESCE((data->>'solved_status')::varchar, '');
+BEGIN
+    INSERT INTO maintanance(bus_id, driver_id, issue, estimated_cost, issue_date, solved_status)
+    VALUES (_bus_id, _driver_id, _issue, _estimated_cost, _issue_date, _solved_status);
+
+    RETURN JSON_BUILD_OBJECT('success', 'success');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+--query
+SELECT public.maintanance_insert(
+    '{"driver_id":"1","bus_id":"01","issue":"Looking glass","estimated_cost":300,"date":"2023-12-14","solved_status":"working"}'::json
+);
+
+-- Check the result
+SELECT * FROM maintanance;
+
+
+
+
+
