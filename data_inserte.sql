@@ -70,26 +70,26 @@ INSERT INTO driver (driver_id, name, age, license_no) VALUES
 //insert bus
 
 INSERT INTO bus (bus_id, category, license_no, assign) VALUES 
-('B202401', 'AC Bus', 'AB1234', 'VIP Passengers'),
-('B202402', 'Non-AC Bus', 'NB5678', 'General Public'),
-('B202403', 'Mini Bus', 'MB9101', 'Short Trips'),
-('B202404', 'Local Bus', 'LB1121', 'Everyone'),
-('B202405', 'Double Decker', 'DD3141', 'Tourists'),
-('B202406', 'School Bus', 'SB5161', 'Students'),
-('B202407', 'University Bus', 'UB7181', 'University Students'),
-('B202408', 'Tourist Bus', 'TB9201', 'Tourists'),
-('B202409', 'City Bus', 'CB1222', 'City Commuters'),
-('B202410', 'Express Bus', 'EB3242', 'Long Distance Travelers'),
-('B202411', 'Shuttle Bus', 'SHB5262', 'Office Workers'),
-('B202412', 'Intercity Bus', 'IB7282', 'Intercity Travelers'),
-('B202413', 'VIP Bus', 'VIP9302', 'VIP Passengers'),
-('B202414', 'Luxury Bus', 'LB1333', 'High-End Travelers'),
-('B202415', 'Sleeper Bus', 'SB3353', 'Overnight Travelers'),
-('B202416', 'Electric Bus', 'EB5373', 'Eco-Friendly Travelers'),
-('B202417', 'Hybrid Bus', 'HB7393', 'Eco-Friendly Travelers'),
-('B202418', 'Airport Shuttle', 'AS9404', 'Airport Passengers'),
-('B202419', 'Rent-a-Bus', 'RB1414', 'Rental Service'),
-('B202420', 'Festival Special', 'FS3434', 'Festival Participants');
+('B202401', 'AC Bus', 'DHAKA-1234', 'VIP Passengers'),
+('B202402', 'Non-AC Bus', 'CHITTAGONG-5678', 'General Public'),
+('B202403', 'Mini Bus', 'DHAKA-9101', 'Short Trips'),
+('B202404', 'Local Bus', 'DHAKA-1121', 'Everyone'),
+('B202405', 'Double Decker', 'COX-3141', 'Tourists'),
+('B202406', 'School Bus', 'DHAKA-5161', 'Students'),
+('B202407', 'University Bus', 'DHAKA-7181', 'University Students'),
+('B202408', 'Tourist Bus', 'SYLHET-9201', 'Tourists'),
+('B202409', 'City Bus', 'DHAKA-1222', 'City Commuters'),
+('B202410', 'Express Bus', 'DHAKA-3242', 'Long Distance Travelers'),
+('B202411', 'Shuttle Bus', 'DHAKA-5262', 'Office Workers'),
+('B202412', 'Intercity Bus', 'RAJSHAHI-7282', 'Intercity Travelers'),
+('B202413', 'VIP Bus', 'DHAKA-9302', 'VIP Passengers'),
+('B202414', 'Luxury Bus', 'DHAKA-1333', 'High-End Travelers'),
+('B202415', 'Sleeper Bus', 'DHAKA-3353', 'Overnight Travelers'),
+('B202416', 'Electric Bus', 'DHAKA-5373', 'Eco-Friendly Travelers'),
+('B202417', 'Hybrid Bus', 'DHAKA-7393', 'Eco-Friendly Travelers'),
+('B202418', 'Airport Shuttle', 'DHAKA-9404', 'Airport Passengers'),
+('B202419', 'Rent-a-Bus', 'DHAKA-1414', 'Rental Service'),
+('B202420', 'Festival Special', 'DHAKA-3434', 'Festival Participants');
 
 
 //insert route
